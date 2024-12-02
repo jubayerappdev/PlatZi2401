@@ -8,26 +8,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.creativeitinstitute.platzi2401.R
+import com.creativeitinstitute.platzi2401.base.BaseFragment
 import com.creativeitinstitute.platzi2401.data.models.login.RequestLogin
 import com.creativeitinstitute.platzi2401.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-    lateinit var binding: FragmentLoginBinding
+
 
     val viewModel : LoginViewModel by viewModels()
 
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-
-        binding = FragmentLoginBinding.inflate(inflater,container,false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel.loginResponse.observe(viewLifecycleOwner){
 
             if (it.isSuccessful){
@@ -35,11 +31,6 @@ class LoginFragment : Fragment() {
             }
 
         }
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
