@@ -57,10 +57,16 @@ dependencies {
     //Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
-//    implementation(libs.okhttp)
+    implementation(libs.okhttp)
 //    implementation(libs.okhttp.loggin.inceptor)
     //lottie
     implementation(libs.lottie)
+
+    implementation(libs.circleimageview)
+    implementation(libs.coil)
+    implementation(libs.glide)
+    implementation(libs.imagepicker)
+    implementation(libs.activity.ktx)
 
     //ssp sdp
     implementation("com.intuit.ssp:ssp-android:1.1.1")
@@ -77,6 +83,8 @@ dependencies {
     implementation(libs.android.viewmodel)
     implementation(libs.android.livedata)
     implementation(libs.fragment.ktx)
+
+
 
 
 
